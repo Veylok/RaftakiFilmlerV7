@@ -1,0 +1,84 @@
+﻿@model ServicesV7.ViewModels.FilmVM_CE
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+
+    <div class="login-box">
+        <h1>Edit</h1>
+
+        
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <input asp-for="FilmId" hidden />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FilmName" class="control-label"></label>
+                        <input asp-for="FilmName" class="form-control" />
+                        <span asp-validation-for="FilmName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FilmProduction" class="control-label"></label>
+                        <input asp-for="FilmProduction" class="form-control" />
+                        <span asp-validation-for="FilmProduction" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FilmType" class="control-label"></label>
+
+                        <select asp-for="FilmType" asp-items="@(new SelectList(Model.TypeList,"TypeId","TypeName"))" class="form-control">
+                            <option>Seçiniz</option>
+                        </select>
+
+                        <span asp-validation-for="FilmType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FilmTime" class="control-label"></label>
+                        <input asp-for="FilmTime" class="form-control" />
+                        <span asp-validation-for="FilmTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FilmImdb" class="control-label"></label>
+                        <input asp-for="FilmImdb" class="form-control" />
+                        <span asp-validation-for="FilmImdb" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FilmExplanation" class="control-label"></label>
+                        <input asp-for="FilmExplanation" class="form-control" />
+                        <span asp-validation-for="FilmExplanation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FilmResimLinki" class="control-label"></label>
+                        <input asp-for="FilmResimLinki" class="form-control" />
+                        <span asp-validation-for="FilmResimLinki" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Edit" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+    <section>
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    </section>
+
+</body>
+</html>

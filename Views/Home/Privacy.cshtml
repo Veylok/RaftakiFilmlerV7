@@ -1,0 +1,47 @@
+﻿@model Dictionary<string, List<ServicesV7.ViewModels.FilmVM>>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ana Sayfa</title>
+    <link rel="stylesheet" type="text/css" href="/css/privacy.css">
+</head>
+<body>
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var category in Model)
+        {
+            <h2>@category.Key</h2>
+
+            var films = category.Value;
+            if (films != null && films.Count > 0)
+            {
+                <div class="film-row">
+                    @foreach (var film in films)
+                    {
+                        <div class="film-container">
+                            <img src="@film.FilmResimLinki" alt="@film.FilmName" class="film-image">
+                            <div class="film-details">
+                                <h3>@film.FilmName</h3>
+                                <p>Yapım: @film.FilmProduction</p>
+                                <p>IMDb: @film.FilmImdb</p>
+                                <p>Tür: @film.FilmDescription</p>
+                                <p>Süre: @film.FilmTime dakika</p>
+                                <p>Açıklama: @film.FilmExplanation</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>Film listesi bulunamadı.</p>
+            }
+        }
+    }
+    else
+    {
+        <p>Kategori listesi bulunamadı.</p>
+    }
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ana Sayfa</title>
+    <link rel="stylesheet" type="text/css" href="/css/anaSayfaIndex.css">
+
+</head>
+<body>
+    <div class="film-row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="film-container">
+                    <img src="@item.FilmResimLinki" alt="@item.FilmName" class="film-image">
+                    <div class="film-details">
+                        <h3>@item.FilmName</h3>
+                        <p>Yapım: @item.FilmProduction</p>
+                        <p>IMDb: @item.FilmImdb</p>
+                        <p>Tür: @item.FilmDescription</p>
+                        <p>Süre: @item.FilmTime dakika</p>
+                        <p>Açıklama: @item.FilmExplanation</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Film listesi bulunamadı.</p>
+        }
+    </div>
+</body>
+</html>

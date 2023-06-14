@@ -1,0 +1,60 @@
+﻿@model ServicesV7.ViewModels.FilmVM_CE
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Create</title>
+    <link rel="stylesheet" href="/css/create.css" />
+</head>
+
+
+
+<div class="login-box">
+    <h2>Create</h2>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="user-box">
+                <input asp-for="FilmName" class="form-control" required="" />
+                <label>Film Name</label>
+            </div>
+            <div class="user-box">
+                <input asp-for="FilmProduction" class="form-control" required="" />
+                <label>Film Production</label>
+            </div>
+            <div class="user-box">
+                <input asp-for="FilmTime" class="form-control" required="" />
+                <label>Film Time</label>
+            </div>
+            <div class="user-box">
+                <label>Film Type</label>
+                <select asp-for="FilmType" asp-items="@(new SelectList(Model.TypeList,"TypeId","TypeName"))" class="form-control">
+                    <option disabled selected hidden>Select</option>
+                </select>
+            </div>
+            <div class="user-box">
+                <input asp-for="FilmImdb" class="form-control" required="" />
+                <label>Film IMDB</label>
+            </div>
+            <div class="user-box">
+                <input asp-for="FilmExplanation" class="form-control" required="" />
+                <label>Film Explanation</label>
+            </div>
+            <div class="user-box">
+                <input asp-for="FilmResimLinki" class="form-control" required="" />
+                <label>Film Image Link</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+

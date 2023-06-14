@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ServicesV7.ViewModels.FilmVM>
+
+@{
+    ViewData["Title"] = "Admin Ana Sayfa";
+}
+
+
+<link rel="stylesheet" type="text/css" href="~/css/adminIndex.css" />
+
+<h1>Admin Ana Sayfa</h1>
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Film Ekle</a>
+</p>
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmProduction)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmImdb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmExplanation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmResimLinki)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FilmId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FilmName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FilmProduction)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FilmDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FilmTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FilmImdb)
+                    </td>
+                    <td>
+                        <div class="film-explanation">@Html.DisplayFor(modelItem => item.FilmExplanation)</div>
+                    </td>
+                    <td>
+                        <div class="film-resim-linki">@Html.DisplayFor(modelItem => item.FilmResimLinki)</div>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.FilmId" class="btn-edit">Upd</a> |
+                        <a asp-action="Delete" asp-route-id="@item.FilmId" class="btn-delete">Delet</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
